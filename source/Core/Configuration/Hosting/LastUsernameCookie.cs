@@ -92,7 +92,8 @@ namespace IdentityServer3.Core.Configuration.Hosting
                 {
                     HttpOnly = true,
                     Secure = secure,
-                    Path = path
+                    Path = path,
+                    SameSite = SameSiteMode.None
                 };
 
                 if (!String.IsNullOrWhiteSpace(username))

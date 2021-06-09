@@ -54,7 +54,8 @@ namespace IdentityServer3.Core.Configuration.Hosting
             {
                 HttpOnly = false,
                 Secure = secure,
-                Path = path
+                Path = path,
+                SameSite = SameSiteMode.None
             };
 
             if (persistent != false)
