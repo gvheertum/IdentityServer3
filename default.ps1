@@ -51,9 +51,9 @@ task UpdateVersion {
 }
 
 task RunTests -depends Compile {
-	$project = "IdentityServer3.Tests"
-	mkdir $output_directory\xunit\$project -ea SilentlyContinue
-	.$xunit_path "$src_directory\Tests\UnitTests\bin\Release\$project.dll"
+	# $project = "IdentityServer3.Tests"
+	# mkdir $output_directory\xunit\$project -ea SilentlyContinue
+	# .$xunit_path "$src_directory\Tests\UnitTests\bin\Release\$project.dll"
 }
 
 
@@ -63,9 +63,10 @@ task ILMerge -depends Compile {
 	Get-ChildItem -Path $output_directory -Filter *.dll |
 		foreach-object {
 			# Exclude IdentityServer3.dll as that will be the primary assembly
-			if ("$_" -ne "IdentityServer3.dll" -and
-			    "$_" -ne "Owin.dll") {
-				$input_dlls = "$input_dlls $output_directory\$_"
+			if ("$_" -ne "$output_directory\IdentityServer3.dll" -and
+			    "$_" -ne "$output_directory\Owin.dll") {
+				
+				$input_dlls = "$input_dlls $_"
 			}
 	}
 
