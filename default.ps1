@@ -25,7 +25,7 @@ task Clean {
 }
 
 task Compile -depends UpdateVersion {
-	exec { msbuild /nologo /verbosity:q $sln_file /p:Configuration=$target_config /p:TargetFrameworkVersion=v4.5 }
+	exec { msbuild /nologo /verbosity:q $sln_file /p:Configuration=$target_config /p:TargetFrameworkVersion=v4.7.2 }
 
 	if ($LastExitCode -ne 0) {
         exit $LastExitCode
