@@ -46,12 +46,14 @@ namespace IdentityServer3.Core.Configuration.Hosting
                  "text/html".Equals(actionExecutedContext.Response.Content.Headers.ContentType.MediaType, StringComparison.OrdinalIgnoreCase))
             )
             {
-                if (EnableCto)
+                // Temporarily suspended the nosniff X-Content due to chrome >= 91 issues
+                if (false && EnableCto)
                 {
                     actionExecutedContext.Response.Headers.Add("X-Content-Type-Options", "nosniff");
                 }
 
-                if (EnableXfo && actionExecutedContext.Request.GetSuppressXfo() == false)
+                // Temporarily suspended the SAMEORIGIN X-Frame due to chrome >= 91 issues
+                if (false && EnableXfo && actionExecutedContext.Request.GetSuppressXfo() == false)
                 {
                     actionExecutedContext.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
                 }
