@@ -126,7 +126,8 @@ namespace IdentityServer3.Core.Configuration.Hosting
             {
                 HttpOnly = true,
                 Secure = secure,
-                Path = path
+                Path = path,
+                SameSite = SameSiteCookieHandler.GetSameSideModeForContext(context)
             });
 
             return bytes;

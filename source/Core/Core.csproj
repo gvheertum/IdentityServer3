@@ -235,6 +235,7 @@
     <Compile Include="Results\RevocationErrorResult.cs" />
     <Compile Include="Results\IntrospectionResult.cs" />
     <Compile Include="Results\WelcomeActionResult.cs" />
+    <Compile Include="SameSiteCookieHandler.cs" />
     <Compile Include="Services\Caching\CachingClientStore.cs" />
     <Compile Include="Services\Caching\CachingUserService.cs" />
     <Compile Include="Services\Caching\CachingScopeStore.cs" />

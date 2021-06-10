@@ -93,7 +93,7 @@ namespace IdentityServer3.Core.Configuration.Hosting
                     HttpOnly = true,
                     Secure = secure,
                     Path = path,
-                    SameSite = SameSiteMode.None
+                    SameSite = SameSiteCookieHandler.GetSameSideModeForContext(ctx)
                 };
 
                 if (!String.IsNullOrWhiteSpace(username))

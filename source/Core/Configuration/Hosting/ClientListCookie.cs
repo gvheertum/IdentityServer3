@@ -139,7 +139,7 @@ namespace IdentityServer3.Core.Configuration.Hosting
                 Secure = Secure,
                 Path = CookiePath,
                 Expires = expires,
-                SameSite = Microsoft.Owin.SameSiteMode.None
+                SameSite = SameSiteCookieHandler.GetSameSideModeForContext(ctx)
             };
 
             this.ctx.Response.Cookies.Append(CookieName, value, opts);

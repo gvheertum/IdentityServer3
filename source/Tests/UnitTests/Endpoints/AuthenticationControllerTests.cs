@@ -637,6 +637,16 @@ namespace IdentityServer3.Tests.Endpoints
         }
 
         [Fact]
+        public void PostToLogin_CookieOptions_GetASigninCookie_SameSite() // Added a test for the samesite=none addition
+        {
+            GetLoginPage();
+            var resp = PostForm(GetLoginUrl(), new LoginCredentials { Username = "alice", Password = "alice" });
+            var cookies = resp.GetRawCookies();
+            var cookie = cookies.Single(x => x.StartsWith("SignInMessage"));
+            cookie.Contains("SameSite").Should().BeTrue();
+        }
+
+        [Fact]
         public void PostToLogin_CookieOptions_AllowRememberMeIsFalse_IsPersistentIsTrue_IssuesPersistentCookie()
         {
             options.AuthenticationOptions.CookieOptions.AllowRememberMe = false;

@@ -55,7 +55,7 @@ namespace IdentityServer3.Core.Configuration.Hosting
                 HttpOnly = false,
                 Secure = secure,
                 Path = path,
-                SameSite = SameSiteMode.None
+                SameSite = SameSiteCookieHandler.GetSameSideModeForContext(context)
             };
 
             if (persistent != false)
